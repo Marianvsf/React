@@ -10,7 +10,7 @@ function App() {
       userName='maarianvsf' >
       Marian Suárez
       </TwitterFollowCard>
-    <TwitterFollowCard  
+    <TwitterFollowCard isFollowing
       userName='midudev' >
       Miguel Angel
       </TwitterFollowCard>
