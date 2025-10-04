@@ -6,22 +6,22 @@ function App() {
 
   return (
     <section>
-    <TwitterFollowCard 
-      isFollowing={true} 
-      userName='maarianvsf' 
-      name='Marian Suárez' />
-    <TwitterFollowCard 
-      isFollowing={true} 
-      userName='midudev' 
-      name='Miguel Angel' />
-    <TwitterFollowCard 
-      isFollowing={true} 
-      userName='vxn' 
-      name='Elon Musk' />
-    <TwitterFollowCard 
-      isFollowing={true} 
-      userName='nanutria' 
-      name='Victor Medina' />
+    <TwitterFollowCard  
+      userName='maarianvsf' >
+      Marian Suárez
+      </TwitterFollowCard>
+    <TwitterFollowCard  
+      userName='midudev' >
+      Miguel Angel
+      </TwitterFollowCard>
+    <TwitterFollowCard
+      userName='vxn'>
+      Elon Musk
+      </TwitterFollowCard>
+    <TwitterFollowCard  
+      userName='nanutria'>
+      Victor Medina
+      </TwitterFollowCard>
     </section>
   )
 }
