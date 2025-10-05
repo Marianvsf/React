@@ -3,17 +3,13 @@ import './App.css'
 import confetti from 'canvas-confetti'
 import { Square } from './components/Square.jsx';
 import { TURNS } from './constants.js';
-import { checkWinner } from './logic/board.js';
+import { checkEngGame, checkWinner } from './logic/board.js';
 import { WinnerModal } from './components/WinnerModal.jsx';
 
 function App() {
 const [board, setBoard] = useState(Array(9).fill(null));
 const [turn, setTurn] = useState(TURNS.X)
 const [winner, setWinner] = useState(null)
-
-const checkEngGame = (newBoard) => {
-return newBoard.every((square) => square !== null)
-};
 
 const updateBoard = (index) => {
 
