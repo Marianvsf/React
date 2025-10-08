@@ -6,7 +6,6 @@ const FollowMause = () => {
 
   //pointer move
   useEffect(() => {
-    console.log("efecto", { enabled });
     const handleMove = (event) => {
       const { clientX, clientY } = event;
       setPosition({ x: clientX, y: clientY });
@@ -15,7 +14,6 @@ const FollowMause = () => {
       window.addEventListener("pointermove", handleMove);
     }
     return () => {
-      console.log("cleanup");
       window.removeEventListener("pointermove", handleMove);
     };
   }, [enabled]);
