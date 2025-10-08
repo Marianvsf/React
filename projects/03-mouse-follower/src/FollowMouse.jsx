@@ -4,6 +4,7 @@ const FollowMause = () => {
   const [enabled, setEnabled] = useState();
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
+  //pointer move
   useEffect(() => {
     console.log("efecto", { enabled });
     const handleMove = (event) => {
@@ -18,6 +19,15 @@ const FollowMause = () => {
       window.removeEventListener("pointermove", handleMove);
     };
   }, [enabled]);
+
+  // change body className
+  useEffect(() => {
+    document.body.classList.toggle("no-cursor", enabled);
+    return () => {
+      document.body.classList.remove("no-cursor");
+    };
+  }, [enabled]);
+
   return (
     <main>
       <div
