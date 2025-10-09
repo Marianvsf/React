@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./style.css";
 
 const CAT_ENDPOINT_RANDOM_FACT = "https://catfact.ninja/fact";
 //const CAT_ENDOPOINYT_IMAG_URL = `https://cataas.com/cat/says/${firstWord}?fontSize=50&fontColor=red&json=true`;
@@ -43,7 +44,7 @@ export function App() {
 
   return (
     <main>
-      <h1>App</h1>
+      <h1>App de Gatitos</h1>
       {fact && <p>{fact}</p>}
       {imageUrl && (
         <img
