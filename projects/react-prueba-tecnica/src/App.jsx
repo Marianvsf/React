@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import "./style.css";
 
-const CAT_ENDPOINT_RANDOM_FACT = "https://catfact.ninja/fact";
-
 export function App() {
   const [fact, setFact] = useState();
   const [imageUrl, setImageUrl] = useState();
@@ -14,7 +12,7 @@ export function App() {
         if (!res.ok) {
           setError("No se ha podido recuperar la cita");
         }
-        return res.json();
+        return;
       })
       .then((data) => {
         const { fact } = data;
