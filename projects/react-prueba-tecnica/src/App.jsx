@@ -1,29 +1,17 @@
 import { useEffect, useState } from "react";
 import "./style.css";
 import { getRandomFact } from "./services/facts";
+import { useCatImage } from "./hooks/useCatImage";
 
 export function App() {
   const [fact, setFact] = useState();
-  const [imageUrl, setImageUrl] = useState();
+
   const [error, setError] = useState();
+  const { imageUrl } = useCatImage({ fact });
 
   useEffect(() => {
     getRandomFact().then(setFact);
   }, []);
-
-  useEffect(() => {
-    if (!fact) return;
-    const threeFirstWord = fact.split(" ", 3).join(" ");
-
-    fetch(
-      `https://cataas.com/cat/says/${threeFirstWord}?fontSize=50&fontColor=red&json=true`
-    )
-      .then((res) => res.json())
-      .then((response) => {
-        const { url } = response;
-        setImageUrl(url);
-      });
-  }, [fact]);
 
   const handleClick = async () => {
     const newFact = await getRandomFact();
