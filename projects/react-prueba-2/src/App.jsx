@@ -34,8 +34,8 @@ function useSearch() {
 }
 
 function App() {
-  const { movies: mappedMovies } = useMovies();
   const { search, updateSearch, error } = useSearch();
+  const { movies: mappedMovies } = useMovies({ search });
 
   const handleSummit = (event) => {
     event.preventDefault();
