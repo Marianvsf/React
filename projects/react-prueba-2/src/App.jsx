@@ -15,6 +15,7 @@ function App() {
 
   const handleChange = (event) => {
     const newQuery = event.target.value;
+    if (newQuery.startsWith(" ")) return;
     setQuery(newQuery);
   };
 
