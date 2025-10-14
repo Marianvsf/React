@@ -35,10 +35,11 @@ function useSearch() {
 
 function App() {
   const { search, updateSearch, error } = useSearch();
-  const { movies: mappedMovies } = useMovies({ search });
+  const { movies: mappedMovies, getMovies } = useMovies({ search });
 
   const handleSummit = (event) => {
     event.preventDefault();
+    getMovies({ search });
   };
 
   const handleChange = (event) => {
