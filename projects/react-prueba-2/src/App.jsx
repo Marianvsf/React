@@ -1,14 +1,18 @@
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies.jsx";
 import { useMovies } from "./hooks/useMovies.js";
-import { useState } from "react";
 
 function useSearch() {
   const [search, updateSearch] = useState("");
   const [error, setError] = useState(null);
+  const isFirtsInput = useRef(true);
 
   useEffect(() => {
+    if (isFirtsInput.current) {
+      isFirtsInput.current = search === "";
+      return;
+    }
     if (search === "") {
       setError("No se puede buscar una película vacía");
       return;
@@ -58,6 +62,7 @@ function App() {
           ></input>
           <button type="submit">Buscar</button>
         </form>
+        <p style={{ color: "red" }}>{error}</p>
       </header>
       <main>
         <Movies movies={mappedMovies} />
