@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies.jsx";
 import { useMovies } from "./hooks/useMovies.js";
@@ -39,11 +39,12 @@ function App() {
   const { search, updateSearch, error } = useSearch();
   const { movies, loading, getMovies } = useMovies({ search, sort });
 
-  const debounceGetMovies = useCallback(
-    debounce((search) => {
-      getMovies({ search });
-    }, 300),
-    [],
+  const debounceGetMovies = useMemo(
+    () =>
+      debounce((search) => {
+        getMovies({ search });
+      }, 300),
+    [getMovies],
   );
 
   const handleSummit = (event) => {
@@ -58,7 +59,7 @@ function App() {
   const handleChange = (event) => {
     const newSearch = event.target.value;
     updateSearch(newSearch);
-    debounceGetMovies({ newSearch });
+    debounceGetMovies(newSearch);
   };
 
   return (
