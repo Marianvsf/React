@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies.jsx";
 import { useMovies } from "./hooks/useMovies.js";
+import debounce from "just-debounce-it";
 
 function useSearch() {
   const [search, updateSearch] = useState("");
@@ -38,6 +39,13 @@ function App() {
   const { search, updateSearch, error } = useSearch();
   const { movies, loading, getMovies } = useMovies({ search, sort });
 
+  const debounceGetMovies = useCallback(
+    debounce((search) => {
+      getMovies({ search });
+    }, 300),
+    [],
+  );
+
   const handleSummit = (event) => {
     event.preventDefault();
     getMovies({ search });
@@ -48,7 +56,9 @@ function App() {
   };
 
   const handleChange = (event) => {
-    updateSearch(event.target.value);
+    const newSearch = event.target.value;
+    updateSearch(newSearch);
+    debounceGetMovies({ newSearch });
   };
 
   return (
