@@ -13,7 +13,7 @@ function ListOfMovies({ movies }) {
 }
 
 function NoMoviesResults() {
-  return <label>no hay movies</label>;
+  return <label>No se encontraron peliculas para esta búsqueda</label>;
 }
 
 export function Movies({ movies }) {
