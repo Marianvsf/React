@@ -66,7 +66,7 @@ function App() {
             name="query"
             placeholder="Avengers, Matrix, Harry Pott..."
           ></input>
-          <input type="checkbox"></input>
+          <input type="checkbox" onChange={handleSort}></input>
           <button type="submit">Buscar</button>
         </form>
         <p style={{ color: "red" }}>{error}</p>
