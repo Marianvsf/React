@@ -34,12 +34,17 @@ function useSearch() {
 }
 
 function App() {
+  const [sort, setSort] = useState(false);
   const { search, updateSearch, error } = useSearch();
-  const { movies, loading, getMovies } = useMovies({ search });
+  const { movies, loading, getMovies } = useMovies({ search, sort });
 
   const handleSummit = (event) => {
     event.preventDefault();
     getMovies({ search });
+  };
+
+  const handleSort = () => {
+    setSort(!sort);
   };
 
   const handleChange = (event) => {
@@ -61,6 +66,7 @@ function App() {
             name="query"
             placeholder="Avengers, Matrix, Harry Pott..."
           ></input>
+          <input type="checkbox"></input>
           <button type="submit">Buscar</button>
         </form>
         <p style={{ color: "red" }}>{error}</p>
