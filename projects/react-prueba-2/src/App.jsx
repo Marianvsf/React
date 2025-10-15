@@ -35,7 +35,7 @@ function useSearch() {
 
 function App() {
   const { search, updateSearch, error } = useSearch();
-  const { movies: mappedMovies, getMovies } = useMovies({ search });
+  const { movies, loading, getMovies } = useMovies({ search });
 
   const handleSummit = (event) => {
     event.preventDefault();
@@ -65,9 +65,7 @@ function App() {
         </form>
         <p style={{ color: "red" }}>{error}</p>
       </header>
-      <main>
-        <Movies movies={mappedMovies} />
-      </main>
+      <main>{loading ? <p>Cargando...</p> : <Movies movies={movies} />}</main>
     </div>
   );
 }
