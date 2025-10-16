@@ -30,6 +30,11 @@ form {
   gap: 32px;
 }
 
+.nomovies h4 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .movie {
   text-align: center;
 }

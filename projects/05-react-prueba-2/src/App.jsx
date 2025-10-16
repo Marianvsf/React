@@ -65,7 +65,7 @@ function App() {
   return (
     <div className="page">
       <header>
-        <h1>Buscador de peliculas</h1>
+        <h1>Buscador de películas</h1>
         <form className="form" onSubmit={handleSummit}>
           <input
             style={{
